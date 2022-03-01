@@ -47,8 +47,8 @@ public class PessoaService {
 
     public List<Lancamento> buscarLancamentoPelaPessoaCodigo(Long codigo) {
         List<Lancamento> listLancamentos = lancamentoRepository.findByPessoaCodigo(codigo);
-        // if (!listLancamentos.isEmpty())
-        //     throw new EmptyResultDataAccessException(1);
+        if (!listLancamentos.isEmpty())
+            throw new EmptyResultDataAccessException(1);
 
         return listLancamentos;
     }
@@ -56,8 +56,8 @@ public class PessoaService {
     public void remover(Long codigo) {
 
         List<Lancamento>  lancamentoRemover = buscarLancamentoPelaPessoaCodigo(codigo);
-        // if (!lancamentoRemover.isEmpty())
-        pessoaRepository.deleteById(codigo);
+        if (!lancamentoRemover.isEmpty())
+            pessoaRepository.deleteById(codigo);
 
     }
 
